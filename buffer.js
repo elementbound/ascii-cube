@@ -1,3 +1,4 @@
+const process = require('process')
 const { lerp, zip, normalize, vecdir2 } = require('./utils.js')
 
 class Buffer {
@@ -51,9 +52,10 @@ class Buffer {
     }
 
     present() {
-        for(let y = 0; y < this.height; ++y) {
-            console.log(this.buffer.slice(y*this.width, (y+1)*this.width).join(''))
-        }
+        let begins = [...Array(this.height)].map((v,i) => i*this.width)
+        let ends = begins.map(v => v+this.width)
+        let rows = zip(begins, ends).map(r => this.buffer.slice(r[0],r[1]).join(''))
+        process.stdout.write(rows.join('\n'))
     }
 }
 

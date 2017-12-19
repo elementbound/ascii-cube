@@ -40,9 +40,8 @@ const cross = (u,v) =>
 ]
 
 const zip = (a, b) => {
-    let short = (a.length < b.length) ? a : b
-    let long = (a.length < b.length) ? b : a
-    return short.map((v, i) => [short[i], long[i]])
+    let length = Math.min(a.length, b.length)
+    return [...Array(length).keys()].map(i => [a[i], b[i]])
 }
 
 const dot = (a, b) => 

@@ -13,7 +13,7 @@ let cubeState = {
 
 var buffer = new Buffer(160,48)
 
-let update = (state) => {
+var update = (state) => {
     state.rot[0] = (state.rot[0] + state.vel[0] * state.timeout / 1000) % 360
     state.rot[1] = (state.rot[1] + state.vel[1] * state.timeout / 1000) % 360
 
@@ -22,7 +22,9 @@ let update = (state) => {
 
     cube(buffer, ...state.rot)
     buffer.present()
+
+    setTimeout(update.bind(null, state), state.timeout)
 }
 
-console.reset()
-setInterval(update.bind(null, cubeState), cubeState.timeout)
+console.reset();
+update(cubeState)

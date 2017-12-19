@@ -44,11 +44,12 @@ function cube(window, rotx, roty) {
     // Projection transform
     let middle = [window.width / 2, window.height / 2]
     let size = Math.min(window.width, window.height) / 4
+    size = [size, size/2]
 
     points = points.map(p => 
         [
-            middle[0] + p[0] * size,
-            middle[1] + p[2] * size
+            middle[0] + p[0] * size[0],
+            middle[1] + p[2] * size[1]
         ]
     )
 

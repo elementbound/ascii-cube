@@ -55,11 +55,11 @@ function cube(window, rotx, roty) {
 
     // Draw
     links.forEach(l => 
-        window.line(points[l[0]], points[l[1]], '+')
+        window.line(points[l[0]], points[l[1]])
     )
 
     points.forEach(p => 
-        window.set(p[0],p[1], 'O')
+        window.set(p[0],p[1], '○')
     )
 }
 

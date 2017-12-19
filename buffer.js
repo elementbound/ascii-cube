@@ -1,4 +1,4 @@
-const { lerp } = require('./utils.js')
+const { lerp, zip, normalize, vecdir2 } = require('./utils.js')
 
 class Buffer {
     constructor(width, height) {
@@ -28,8 +28,18 @@ class Buffer {
         )
     }
 
-    line(from, to, c='x') {
+    line(from, to, c) {
         let manhattan_length = Math.abs(from[0] - to[0]) + Math.abs(from[1] - to[1])
+
+        if(c == undefined) {
+            let dir = zip(from, to).map(p => p[1]-p[0])
+            dir = normalize(dir)
+            dir = vecdir2(dir)
+
+            let d = "─╱│╲─╱│╲─".split('')
+            let i = Math.round(dir/45)
+            c = d[i]
+        }
 
         for(let i = 0; i < manhattan_length; ++i) {
             let f = i / manhattan_length

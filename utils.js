@@ -12,9 +12,25 @@ const dirvec3 = (rotx, roty) => {
     ]
 }
 
+const vecdir2 = vec =>
+    angle_sanitize(rtd(Math.atan2(-vec[1], vec[0])))
+
 // degrees to radians
 const dtr = x => 
     x / 180 * Math.PI
+    
+// radians to degrees
+const rtd = x => 
+    x * 180 / Math.PI
+
+const angle_sanitize = x => {
+    while(x < 0)
+        x += 360
+
+    x = x % 360
+
+    return x
+}
 
 const cross = (u,v) => 
 [
@@ -56,11 +72,14 @@ const rotAxes = (rotx, roty) => {
 module.exports = {
     lerp, 
     dtr,
+    rtd,
+    angle_sanitize,
     cross,
     dirvec3,
     rotAxes,
     dot,
     veclen,
     normalize,
+    vecdir2,
     zip
 }

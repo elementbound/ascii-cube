@@ -52,6 +52,9 @@ const dot = (a, b) =>
 const veclen = vec => 
     Math.sqrt(dot(vec, vec))
 
+const vecdst = (a,b) => 
+    veclen(zip(a,b).map(p => p[1]-p[0]))
+
 const normalize = vec => 
     vec.map(v => v / veclen(vec))
 
@@ -78,6 +81,7 @@ module.exports = {
     rotAxes,
     dot,
     veclen,
+    vecdst,
     normalize,
     vecdir2,
     zip

@@ -1,5 +1,5 @@
 const process = require('process')
-const { lerp, zip, normalize, vecdir2 } = require('./utils.js')
+const { lerp, zip, normalize, vecdir2, vecdst } = require('./utils.js')
 
 class Buffer {
     constructor(width, height) {
@@ -30,7 +30,7 @@ class Buffer {
     }
 
     line(from, to, c) {
-        let manhattan_length = Math.abs(from[0] - to[0]) + Math.abs(from[1] - to[1])
+        let manhattan_length = vecdst(from, to)
 
         if(c == undefined) {
             let dir = zip(from, to).map(p => p[1]-p[0])

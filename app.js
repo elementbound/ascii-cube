@@ -2,13 +2,13 @@ const process = require('process')
 const conutil = require('./conutil.js')
 const Buffer = require('./buffer.js')
 const {draw} = require('./mesh.js')
-const {Cube} = require('./mesh-prefabs.js')
+const {Cube, Icosahedron} = require('./mesh-prefabs.js')
 const transforms = require('./transforms.js')
 
 conutil.apply(console)
 
 let cubeState = {
-    mesh: Cube(), 
+    mesh: Icosahedron(), 
     rot: [0,0],
     vel: [90, 90],
     timeout: 1000/30

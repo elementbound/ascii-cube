@@ -44,6 +44,9 @@ const zip = (a, b) => {
     return [...Array(length).keys()].map(i => [a[i], b[i]])
 }
 
+const range = n => 
+    [...Array(n).keys()]
+
 const dot = (a, b) => 
     zip(a,b)
         .map(v => v[0]*v[1])
@@ -70,5 +73,6 @@ module.exports = {
     vecdst,
     normalize,
     vecdir2,
-    zip
+    zip,
+    range
 }

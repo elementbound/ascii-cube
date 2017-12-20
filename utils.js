@@ -58,19 +58,6 @@ const vecdst = (a,b) =>
 const normalize = vec => 
     vec.map(v => v / veclen(vec))
 
-const rotAxes = (rotx, roty) => {
-    let front = dirvec3(rotx, roty)
-    let right = dirvec3(0   , roty+90)
-    let up = cross(front, right)
-    right = cross(front, up)
-
-    return [
-        normalize(right),
-        normalize(front),
-        normalize(up)
-    ]
-}
-
 module.exports = {
     lerp, 
     dtr,
@@ -78,7 +65,6 @@ module.exports = {
     angle_sanitize,
     cross,
     dirvec3,
-    rotAxes,
     dot,
     veclen,
     vecdst,

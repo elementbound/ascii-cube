@@ -1,11 +1,14 @@
 const process = require('process')
 const conutil = require('./conutil.js')
 const Buffer = require('./buffer.js')
-const cube = require('./cube.js')
+const {draw} = require('./mesh.js')
+const {Cube} = require('./mesh-prefabs.js')
+const transforms = require('./transforms.js')
 
 conutil.apply(console)
 
 let cubeState = {
+    mesh: Cube(), 
     rot: [0,0],
     vel: [90, 90],
     timeout: 1000/30
@@ -20,7 +23,11 @@ var update = (state) => {
     console.repos()
     buffer.fill()
 
-    cube(buffer, ...state.rot)
+    let middle = [buffer.width / 2, buffer.height / 2]
+    let size = Math.min(buffer.width, buffer.height) / 4
+    size = [size, size/2]
+
+    draw(buffer, state.mesh, transforms.rotation(...state.rot), transforms.ortho(middle, size))
     buffer.present()
 
     setTimeout(update.bind(null, state), state.timeout)

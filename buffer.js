@@ -12,13 +12,19 @@ class Buffer {
         return y*this.width + x
     }
 
+    resize(width, height) {
+        this.width = width
+        this.height = height
+        this.buffer = Array(width*height).fill(' ')
+    }
+
     fill(c = ' ') {
         this.buffer.fill(c)
     }
 
     set(x, y, c) {
-        x = Math.round(x)
-        y = Math.round(y)
+        x = x|0
+        y = y|0
 
         this.buffer[this._at(x,y)] = c
     }

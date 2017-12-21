@@ -5,6 +5,11 @@ const {draw} = require('./mesh.js')
 const {Cube, Icosahedron} = require('./mesh-prefabs.js')
 const transforms = require('./transforms.js')
 
+const terminalSize = () => 
+    process.stdout.isTTY ? 
+        [process.stdout.columns, process.stdout.rows] : 
+        [80, 24]
+
 conutil.apply(console)
 
 let cubeState = {
@@ -14,7 +19,7 @@ let cubeState = {
     timeout: 1000/30
 }
 
-var buffer = new Buffer(160,48)
+var buffer = new Buffer(...terminalSize())
 
 var update = (state) => {
     state.rot[0] = (state.rot[0] + state.vel[0] * state.timeout / 1000) % 360

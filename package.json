@@ -1,0 +1,23 @@
+{
+  "name": "ascii-cube",
+  "version": "1.0.0",
+  "description": "Ever wanted to have a spinning cube in your terminal?",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementbound/ascii-cube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elementbound/ascii-cube/issues"
+  },
+  "homepage": "https://github.com/elementbound/ascii-cube#readme",
+  "dependencies": {
+    "window-size": "^1.1.0"
+  }
+}

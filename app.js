@@ -4,11 +4,14 @@ const Buffer = require('./buffer.js')
 const {draw} = require('./mesh.js')
 const {Cube, Icosahedron} = require('./mesh-prefabs.js')
 const transforms = require('./transforms.js')
+const size = require('window-size')
 
-const terminalSize = () => 
-    process.stdout.isTTY ? 
-        [process.stdout.columns, process.stdout.rows] : 
+const terminalSize = () => {
+    let s = size.get()
+    return s ? 
+        [s.width, s.height] :
         [80, 24]
+}
 
 conutil.apply(console)
 

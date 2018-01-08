@@ -29,6 +29,7 @@ var update = (state) => {
     state.rot[1] = (state.rot[1] + state.vel[1] * state.timeout / 1000) % 360
 
     console.repos()
+    buffer.resize(...terminalSize())
     buffer.fill()
 
     let middle = [buffer.width / 2, buffer.height / 2]

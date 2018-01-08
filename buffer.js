@@ -13,9 +13,14 @@ class Buffer {
     }
 
     resize(width, height) {
+        if(this.width == width && this.height == height)
+            return false
+
         this.width = width
         this.height = height
         this.buffer = Array(width*height).fill(' ')
+
+        return true
     }
 
     fill(c = ' ') {
